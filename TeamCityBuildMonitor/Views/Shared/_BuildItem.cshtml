@@ -1,0 +1,45 @@
+﻿@model TeamCityBuildMonitor.Models.Home.Pipeline
+
+<div id="BuildDiv-@Model.BuilderId">
+    <div class="well build-block@(Model.ShowBroken ? " broken" : "")">
+        <div class="top-build-box">
+            <h4 class="row buildTitle text-cutoff">@Model.Name</h4>
+        </div>
+        <div class="text-cutoff">
+            <div class="build-block-status-text">
+                <div class="build-status-big-text status-@Model.BuilderStatus">@Model.StatusText</div>
+            </div>
+            @if (Model.ShowBroken)
+            {
+                <div class="broken-build-block">
+                    <span class="wanted-red">WANTED</span>
+                    <img src="@Model.BrokenByPicData" alt="@Model.BrokenByName broke the build!"/>
+                    <span>@Model.BrokenByName</span>
+                </div>
+            }
+            <div class="row top-build-box-envs">
+                <h4 class="build-title-envs @Model.QACssClass">QA</h4>
+                <h4 class="build-title-envs @Model.STGCssClass">STG</h4>
+                <h4 class="build-title-envs @Model.RCCssClass">RC</h4>
+                <h4 class="build-title-envs @Model.LIVECssClass">LIVE</h4>
+            </div>
+        </div>
+        <div class="buildInfoBranch text-cutoff">
+            <div class="branch-name">Branch <span class="buildInfoHighlight">@Model.Branch</span></div>
+            @if (!string.IsNullOrWhiteSpace(Model.Progress))
+            {
+                <div class="progress branch-progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="@Model.Progress" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Progress%">
+                        <span class="branch-progress-text">build @Model.Progress% done</span>
+                    </div>
+                </div>
+            }
+            else if (Model.IsQueued)
+            {
+                <span> ▪ </span>
+                <span class="buildInfoProgressHighlight">queued</span>
+            }
+        </div>
+        <p class="buildInfo text-cutoff">Last triggered @Model.LastRunText</p>
+    </div>
+</div>

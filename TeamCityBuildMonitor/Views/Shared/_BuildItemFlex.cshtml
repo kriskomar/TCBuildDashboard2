@@ -1,0 +1,29 @@
+﻿@model TeamCityBuildMonitor.Models.Home.Pipeline
+
+    <div id="BuildDiv-@Model.BuilderId" class="build-item-flex@(Model.ShowBroken ? " broken" : "")" data-broken="@Model.ShowBroken">
+        <h4 class="buildTitle text-cutoff status-@Model.BuilderStatus">@Model.Name</h4>
+        @if (Model.ShowBroken)
+        {
+            <div class="broken-build-block text-cutoff">
+                <img src="@Model.BrokenByPicData" alt="@Model.BrokenByName broke the build!" />
+                <span>@Model.BrokenByName</span>
+            </div>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.Progress))
+        {
+            <div class="buildInfoBranch text-cutoff">
+                <div class="progress branch-progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="@Model.Progress" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Progress%">
+                        <span class="branch-progress-text">build @Model.Progress% done</span>
+                    </div>
+                </div>
+            </div>
+        }
+        else if (Model.IsQueued)
+        {
+            <div class="buildInfoBranch text-cutoff">
+                <span> ▪ </span>
+                <span class="buildInfoProgressHighlight">queued</span>
+            </div>
+        }
+        </div>

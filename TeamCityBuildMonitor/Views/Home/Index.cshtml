@@ -1,0 +1,11 @@
+﻿@using TeamCityBuildMonitor.Controllers
+@model TeamCityBuildMonitor.Models.Home.BuildMonitorViewModel
+@{
+    ViewBag.Title = "Build Status";
+}
+    @foreach (var pipeline in Model.Pipelines)
+    {
+        @await Html.PartialAsync($"~/Views/Shared/{HomeController.BuildItemView}.cshtml", pipeline)
+    }
+@section scripts {
+}

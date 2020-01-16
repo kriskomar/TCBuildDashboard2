@@ -1,0 +1,21 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewBag.Title</title>
+    @*<link rel="stylesheet" type="text/css" href="dist/css/vendorflex.min.css">*@
+    <link rel="stylesheet" type="text/css" href="dist/css/siteflex.min.css">
+</head>
+<body class="initial-hidden">
+<div class="floaty-button">
+    <button onclick="javascript: window.initSpeech();">Enable speech</button>
+</div>
+<div class="container">
+    @RenderBody()
+</div>
+<script src="dist/js/vendorflex.min.js" type="text/javascript"></script>
+<script src="dist/js/siteflex.min.js" type="text/javascript"></script>
+@RenderSection("scripts", false)
+</body>
+</html>

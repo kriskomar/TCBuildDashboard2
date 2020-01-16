@@ -1,0 +1,12 @@
+version: '3.5'
+
+services:
+  teamcitybuildmonitor:
+    image: ${DOCKER_REGISTRY-}teamcitybuildmonitor
+    build:
+      context: .
+      dockerfile: TeamCityBuildMonitor/Dockerfile
+    volumes:
+      - logs:/logs
+volumes:
+  logs:

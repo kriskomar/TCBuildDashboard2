@@ -1,0 +1,10 @@
+version: '3.5'
+
+services:
+  teamcitybuildmonitor:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - username=sa-buildsvr
+      - password=s3ntsy
+    ports:
+    - "8081:8081"

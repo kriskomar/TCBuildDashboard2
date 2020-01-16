@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Settings>
+  <Pipelines>
+	  <Pipeline name="Friendly Name here" builderid="Builder Id Here" qaid="These aren't used anymore" rcid="These aren't used anymore" />
+  </Pipelines>
+</Settings>
